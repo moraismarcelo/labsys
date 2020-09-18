@@ -1,4 +1,4 @@
-<h1> Listagem de Exame</h1>
+<h1> Listagem de Exames</h1>
 
 <p><a href="{{url('/exames/create')}}">Cadastrar Exame</a></p>
 
@@ -19,9 +19,9 @@
                 <td>{{$exam->id}}</td>
                 <td>{{$exam->name}}</td>
                 <td>{{$exam->price}}</td>
-                <td><a href="{{url('exames/'. $exam->id)}}">Visualizar</a> |
+                <td><a href="{{route('exam.show', $exam->id)}}">Visualizar</a> |
                     <a href="#">Editar</a> |
-                    <a href="{{url('exames/destroy/'. $exam->id)}}">Excluir</a> </td>
+                    <a href={{route('exam.destroy',$exam->id)}}>Excluir</a> </td>
 
                 </tr>
             @endforeach

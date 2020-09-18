@@ -35,20 +35,31 @@ class ExamController extends Controller
             $request->name,
             $request->price
         ];
-        DB::insert("INSERT INTO exams (name, price ) VALUES(?,?)", $data);
+        DB::insert("INSERT INTO exams (name, price ) VALUES(?, ?)", $data);
         return redirect()->action('ExamController@index');
     }
 
-    public function edit()
+    public function edit($id)
     {
 
+        $exam = DB::select("SELECT * FROM exams WHERE id= ? LIMIT 1", [$id]);
+
+        if(!empty($exam)){
+            return view('exam.edit')->with(compact('exam'));
+        }else{
+            return redirect()->action('ExamController@index');
+        }
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-
+        $data = [
+            $request->name,
+            $request->price
+        ];
+        DB::update("UPDATE exams SET name = ?, price =  ? WHERE id= $id", $data);
+        return redirect('/exames/'.$id);
     }
-
 
     public function destroy($id)
     {

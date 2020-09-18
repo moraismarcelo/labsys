@@ -1,5 +1,5 @@
 <h1> Cadastro de Exames</h1>
-<form action="{{route("exam.store")}}" method="post">
+<form action="/exames/store" method="post">
     @csrf
     <label for="name">Título do Exame</label>
         <input type="text" name="name" id="name">
