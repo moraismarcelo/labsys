@@ -1,6 +1,9 @@
-<h1> Listagem de Exames</h1>
+@extends('layout.nav')
 
-<p><a href="{{url('/exames/create')}}">Cadastrar Exame</a></p>
+
+@section('content')
+    <h1> Listagem de Exames</h1>
+    <p><a href="{{url('/exames/create')}}">Cadastrar Exame</a></p>
 
 <table class="table">
     <thead>
@@ -20,8 +23,8 @@
                 <td>{{$exam->name}}</td>
                 <td>{{$exam->price}}</td>
                 <td><a href="{{route('exam.show', $exam->id)}}">Visualizar</a> |
-                    <a href="#">Editar</a> |
-                    <a href={{route('exam.destroy',$exam->id)}}>Excluir</a> </td>
+                    <a href="{{"/exames/".$exam->id ."/edit"}}">Editar</a> |
+                    <a href={{route('exam.destroy',$exam->id)}}>Excluir</a></td>
 
                 </tr>
             @endforeach
@@ -29,3 +32,4 @@
 
     </tbody>
 </table>
+@endsection

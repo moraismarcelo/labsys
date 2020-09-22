@@ -1,3 +1,5 @@
+@extends('layout.nav')
+@section('content')
 <h1> Cadastro de Exames</h1>
 <form action="/exames/store" method="post">
     @csrf
@@ -7,3 +9,4 @@
         <input type="text" name="price" id="price">
     <button type="submit">Cadastrar Exame</button>
 </form>
+@endsection

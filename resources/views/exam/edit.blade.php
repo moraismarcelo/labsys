@@ -1,5 +1,7 @@
+@extends('layout.nav')
+@section('content')
 <h1> Cadastro de Exames</h1>
-<p><a href="{{url('/exames')}}">Voltar</a></p>
+<p><a href="{{url('/exames')}}">Voltar </a><a href={{route('exam.destroy',$exam[0]->id)}}>Excluir</a></p>
 <form action="{{url('/exames/' . $exam[0]->id)}}" method="post">
     @csrf
     @method('PUT')
@@ -10,3 +12,4 @@
     <input type="text" name="price" id="price" value="{{$exam[0]->price}}">
     <button type="submit">Atualizar Exame</button>
 </form>
+@endsection

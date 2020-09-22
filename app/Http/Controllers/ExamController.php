@@ -4,20 +4,21 @@ namespace LabSys\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use LabSys\Exam;
 
 class ExamController extends Controller
 {
     public function index()
     {
-        $exams = DB::select("SELECT * FROM exams");
-
+        //  $exams = DB::select("SELECT * FROM exams");
+            $exams = Exam::all();
         return view('exam.index')->with('exams', $exams);
     }
 
     public function show($id)
     {
-        $exam = DB::select("SELECT * FROM exams WHERE id= ? ", [$id]);
-
+        //$exam = DB::select("SELECT * FROM exams WHERE id= ? ", [$id]);
+        $exam = Exam::where('id', $id)->get();
         if(!empty($exam)){
             return view('exam.show')->with('exam',$exam);
         }else{
@@ -41,9 +42,8 @@ class ExamController extends Controller
 
     public function edit($id)
     {
-
-        $exam = DB::select("SELECT * FROM exams WHERE id= ? LIMIT 1", [$id]);
-
+        //$exam = DB::select("SELECT * FROM exams WHERE id= ? LIMIT 1", [$id]);
+        $exam = Exam::where('id', $id)->get();
         if(!empty($exam)){
             return view('exam.edit')->with(compact('exam'));
         }else{
@@ -63,7 +63,7 @@ class ExamController extends Controller
 
     public function destroy($id)
     {
-        DB::delete("DELETE FROM exams WHERE id= {$id}");
+        Exam::destroy($id);
         return redirect()->action('ExamController@index');
     }
 }
