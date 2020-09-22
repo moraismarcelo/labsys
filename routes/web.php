@@ -12,7 +12,6 @@
 */
 
 
-
 Route::get('/clientes', 'ClientController@index')->name('client.index');
 Route::get('/clientes/create', 'ClientController@create');
 
@@ -30,3 +29,5 @@ Route::get('/', function () {
     return view('layout.nav');
 });
 Route::get('/home', 'HomeController@index')->name('home');
+
+

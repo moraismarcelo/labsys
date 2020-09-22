@@ -5,8 +5,8 @@
     <h1> Listagem de Exames</h1>
     <p><a href="{{url('/exames/create')}}">Cadastrar Exame</a></p>
 
-<table class="table">
-    <thead>
+<table class="table table-hover">
+    <thead class="bg-primary">
     <tr>
         <th scope="col">Id</th>
         <th scope="col">Nome</th>

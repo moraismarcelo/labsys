@@ -32,11 +32,17 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        $data = [
+   /*     $data = [
             $request->name,
             $request->price
         ];
         DB::insert("INSERT INTO exams (name, price ) VALUES(?, ?)", $data);
+   */
+        $data = [
+            'name' => $request->name ,
+            'price' => $request->price
+        ];
+        Exam::create($data);
         return redirect()->action('ExamController@index');
     }
 
@@ -53,11 +59,20 @@ class ExamController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = [
+        /*$examData = [
             $request->name,
             $request->price
         ];
         DB::update("UPDATE exams SET name = ?, price =  ? WHERE id= $id", $data);
+        */
+        $examData = [
+            'name' => $request->name,
+            'price' => $request->price
+        ];
+        $exam = Exam::find($id);
+        $exam->name = $request->name;
+        $exam->price = $exam->price;
+        $exam->save();
         return redirect('/exames/'.$id);
     }
 
